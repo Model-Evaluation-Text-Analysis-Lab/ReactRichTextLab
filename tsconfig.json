@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src",  // This is the base directory for resolving non-relative module names
+    "paths": {
+      "@/components/*": ["src/@/components/*"],  // This maps the alias `@/components` to `src/@/components`
+      "@lib/*": ["src/@/lib/*"]  // Similarly, map other subdirectories as needed
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -21,6 +26,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"  // This includes all files under the `src` directory
   ]
 }
