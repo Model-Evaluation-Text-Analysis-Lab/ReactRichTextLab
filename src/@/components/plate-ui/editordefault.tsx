@@ -9,21 +9,32 @@ import { BasicEditor } from './editor';
 import { FloatingToolbar } from './floating-toolbar';
 import { FloatingToolbarButtons } from './floating-toolbar-buttons';
 
+import { createDndPlugin } from '@udecode/plate-dnd';
+import { createNodeIdPlugin } from '@udecode/plate-node-id';
+import { withDraggables } from './with-draggables';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 export function EditorDefault() {
   const plugins = createPlugins(
-    [createBasicElementsPlugin(), createBasicMarksPlugin()],
-    { components: createPlateUI() }
+    [createBasicElementsPlugin(),
+       createBasicMarksPlugin(),
+       createDndPlugin({ options: { enableScroller: true } }),
+       createNodeIdPlugin()],
+    { components: withDraggables(createPlateUI()) }
   );
 
   return (
     <div className="mt-[72px] p-10">
-      <Plate plugins={plugins}>
-        <BasicEditor placeholder="This is the default plate editor..." />
+      <DndProvider backend={HTML5Backend}>
+        <Plate plugins={plugins}>
+          <BasicEditor placeholder="This is the default plate editor..." />
 
-        <FloatingToolbar>
-          <FloatingToolbarButtons />
-        </FloatingToolbar>
-      </Plate>
+          <FloatingToolbar>
+            <FloatingToolbarButtons />
+          </FloatingToolbar>
+        </Plate>
+      </DndProvider>
     </div>
   );
 }

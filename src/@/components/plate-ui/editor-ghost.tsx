@@ -12,29 +12,9 @@ import { FloatingToolbarButtons } from './floating-toolbar-buttons';
 import { createPluginFactory, HotkeyPlugin, onKeyDownToggleElement } from '@udecode/plate';
 import { ELEMENT_BLOCKQUOTE } from '@udecode/plate';
 
-
-
-const createBlockquotePlugin = createPluginFactory<HotkeyPlugin>({
-  key: ELEMENT_BLOCKQUOTE,  // Use the blockquote element type
-  isElement: true,
-  handlers: {
-    // Check for the hotkey on keydown
-    onKeyDown: onKeyDownToggleElement,
-  },
-  options: {
-    // Define the hotkeys here
-    hotkey: ['mod+opt+B', 'mod+shift+B'],  // Use whatever hotkey combination you prefer
-  },
-});
-
-// Usage:
-const blockquotePlugin = createBlockquotePlugin();
-
-
-
 export function EditorGhost() {
   const plugins = createPlugins(
-    [createBasicElementsPlugin(), createBasicMarksPlugin(), blockquotePlugin],
+    [createBasicElementsPlugin(), createBasicMarksPlugin()],
     { components: createPlateUI() }
   );
 
