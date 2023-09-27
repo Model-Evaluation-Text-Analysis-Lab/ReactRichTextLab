@@ -23,6 +23,7 @@
     "@udecode/plate": "^24.0.2",
     "@udecode/plate-basic-marks": "^24.0.2",
     "@udecode/plate-block-quote": "^24.0.2",
+    "@udecode/plate-break": "^24.0.2",
     "@udecode/plate-caption": "^24.0.2",
     "@udecode/plate-code-block": "^24.0.2",
     "@udecode/plate-combobox": "^24.0.2",

@@ -73,4 +73,10 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  @layer components {
+    .border-black {
+      border-color: var(--border-dark-color, rgb(192, 184, 184));  /* Fallback to black if --border-dark-color is not defined */
+    }
+  }
 }
